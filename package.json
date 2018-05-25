@@ -32,6 +32,9 @@
     "js-hyperclick"
   ],
   "eslintConfig": {
-    "extends": "airbnb-base"
+    "extends": "airbnb-base",
+    "globals": {
+      "atom": true
+    }
   }
 }
