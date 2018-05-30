@@ -42,6 +42,6 @@
   "apmInstallSource": {
     "type": "git",
     "source": "jonboiser/atom-vue-hyperclick",
-    "sha": "ff69a784622f281d27ab8307733e23a0ba9c052a"
+    "sha": "249534881fe8acd14a35313781b742d6b72a80be"
   }
 }
