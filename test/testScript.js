@@ -17,6 +17,14 @@ export default {
       this.$emit('closeModal');
     },
   },
+  // data: {
+  //   name: 'Jon',
+  // },
+  data() {
+    return {
+      name: 'Jona',
+    };
+  },
   computed: {
     foo() {
       return 'bar';

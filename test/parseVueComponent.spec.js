@@ -16,6 +16,7 @@ function isAProxiedProperty(ancestors) {
 
 (async function run() {
   const functionExprs = [];
+  const dataExprs = [];
   const text = await getText();
   // Parsed module
   const parsed = acorn.parse(text, {
@@ -28,6 +29,21 @@ function isAProxiedProperty(ancestors) {
         functionExprs.push(node);
       }
     },
+    Property(node) {
+      if (node.key.name === 'data') {
+        // should work for data: {...} and data() {...}
+        const dataObject = walk.findNodeAfter(node, node.start + 1, (node) => {
+          return node === 'ObjectExpression';
+        });
+        walk.simple(dataObject.node, {
+          Property(node) {
+            if (node.key.name === 'name') {
+              dataExprs.push(node);
+            }
+          }
+        })
+      }
+    }
   });
-  console.log(functionExprs);
+  console.log(dataExprs);
 }());
